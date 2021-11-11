@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Login - Cursinho Capanema{% endblock %}
+
+{% block content %}
+
+<div class="login-page">
+    <h1>Login</h1>
+    <div class="module">
+        {% if form.errors %}
+            <p>O usuario e/ou senha não conferem. Tente novamente</p>
+        {% else %}
+            <p>Por favor, informe seu Login e Senha.</p>
+        {% endif %}
+
+        <div class="login-form">
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p><input type="submit" value="Login"></p>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

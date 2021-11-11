@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Meus Conteudos - Cursinho Capanema{% endblock %}
+
+{% block content %}
+
+<div class="cursos">
+    <h1>Meus Conteudos</h1>
+    <div class="module">
+        {% for curso in object_list %}
+            <div class="course-info">
+                <h3>Conteudo: {{ curso.titulo }}</h3>
+                <h3>Disciplina: {{ curso.assunto }}</h3>
+                <p>Criado por: {{ curso.dono }} | as {{ curso.criado }}</p>
+                <br>
+                <p>Descricao: {{ curso.desc_geral }}</p>
+                <br>
+                <p>
+                    <a href="{% url 'editar_curso' curso.id %}">Editar</a>
+                    <a href="{% url 'excluir_curso' curso.id %}">Deletar</a>
+                </p>
+            </div>
+        {% empty %}
+            <h3>Voce nao possui conteudos cadastrados na sua conta.</h3>
+        {% endfor %}
+        <p>
+            <a href="{% url 'criar_curso' %}">Criar Curso</a>
+        </p>
+    </div>
+</div>
+
+{% endblock %}

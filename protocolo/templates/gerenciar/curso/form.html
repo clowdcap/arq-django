@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if object %}
+        Editando Curso {{object.titulo}} - Cursinho Capanema
+    {% else %}
+        Criar Curso - Cursinho Capanema
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+
+<h1>
+{% if object %}
+    Editando Curso {{object.titulo}} - Cursinho Capanema
+{% else %}
+    Criar Curso - Cursinho Capanema
+{% endif %}
+</h1>
+
+<div class="module">
+    <h2>Informações do Curso</h2>
+    <form method="POST">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p>
+            <input type="submit" value="Salvar Conteudo">
+        </p>
+    </form>
+</div>
+
+
+{% endblock %}

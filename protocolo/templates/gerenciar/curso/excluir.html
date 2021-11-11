@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Excluir Curso - Cursinho Capanema {% endblock %}
+
+{% block content %}
+    <h1>Excluir conteudo {{ curso.titulo }}</h1>
+
+    <div class="module">
+        <form method="POST">
+            {% csrf_token %}
+            <p>Tem certeza que deseja excluir o conteudo {{curso.titulo}}</p>
+            <p><input type="submit" value="Confirmar"></p>
+        </form>
+    </div>
+{% endblock %}
